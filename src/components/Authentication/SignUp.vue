@@ -1,45 +1,37 @@
 <template>
-  <div class="login p-0">
-    <form class="form d-flex flex-column" @submit.prevent="" novalidate>
-      <div class="form-group pt-3  mt-3">
-        <input
-          type="text"
-          class="form-control "
-          placeholder="Felhasználónév"
-          v-model="name"
-        />
-      </div>
-
-      <div class="form-group pt-3">
+  <div class="login p-0 pt-5">
+    <form
+      class="form row  border border-info p-5 rounded"
+      @submit.prevent=""
+      novalidate
+    >
+      <div class="form-group sm-col-6 md-col-4  p-0 mb-0">
         <input
           type="email"
           class="form-control"
-          placeholder="E-mail-cím"
+          placeholder="Email"
           v-model="email"
         />
       </div>
 
-      <div class="form-group pt-3">
+      <div class="form-group sm-col-6 md-col-4 p-0 mb-0">
         <input
           type="password"
           class="form-control"
-          placeholder="Jelszó"
+          placeholder="Password"
           v-model="password"
         />
       </div>
-      <p v-if="!formIsValid" class="warning mt-3 p-1">
-        Kérlek adj meg egy felhasználónevet, érvényes e-mail címet és egy
-        legalább 8 karakter hosszúságú jelszót!
-      </p>
 
-      <base-button type="submit" class="" @click="signUp()">
-        REGISZTRÁL
+      <base-button type="submit" class="sm-col-12 md-col-4" @click="signUp()">
+        SIGNUP / LOGIN
       </base-button>
-
-      <p class="forgot-password text-right pt-3">
-        Már regisztráltál?
-      </p>
     </form>
+
+    <p v-if="!formIsValid" class="warning mt-3 p-1">
+      Kérlek adj meg egy felhasználónevet, érvényes e-mail címet és egy legalább
+      8 karakter hosszúságú jelszót!
+    </p>
   </div>
 </template>
 

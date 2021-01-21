@@ -1,5 +1,5 @@
 <template>
-  <button class="p-2 mt-3 button ">
+  <button class="button rounded ">
     <slot> </slot>
   </button>
 </template>
@@ -13,8 +13,8 @@ export default {
 </script>
 
 <style lang="scss">
-$color: #2c3e50;
-$color2: #c79136;
+$color: #181e34;
+$color2: #404e88;
 
 .button {
   width: 100%;

@@ -11,6 +11,8 @@
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
   color: #181e34;
+  background-color: rgb(252, 252, 252);
+  height: 100vh;
 }
 
 #nav {

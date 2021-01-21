@@ -12,7 +12,7 @@
     >
       <NavMenu />
     </div>
-    <div class="nav container d-flex flex-column align-content-end">
+    <div class="auth container d-flex flex-column align-items-between">
       <SignUp />
     </div>
   </div>
@@ -46,7 +46,8 @@ export default {
 
 <style scoped>
 .header,
-.nav {
+.nav,
+.auth {
   max-width: 620px;
 }
 </style>
