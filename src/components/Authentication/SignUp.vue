@@ -1,12 +1,6 @@
 <template>
   <div class="login p-0">
-    <form
-      class="form d-flex flex-column shadow p-5"
-      @submit.prevent=""
-      novalidate
-    >
-      <h3>Regisztráció!</h3>
-
+    <form class="form d-flex flex-column" @submit.prevent="" novalidate>
       <div class="form-group pt-3  mt-3">
         <input
           type="text"
@@ -44,7 +38,6 @@
 
       <p class="forgot-password text-right pt-3">
         Már regisztráltál?
-        <router-link :to="{ name: 'Login' }">Lépj be!</router-link>
       </p>
     </form>
   </div>
@@ -79,7 +72,7 @@ export default {
           password: this.password,
           name: this.name,
         });
-        this.$router.push("/login");
+        this.$router.push("/Home");
       }
     },
   },

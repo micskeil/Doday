@@ -12,19 +12,23 @@
     >
       <NavMenu />
     </div>
+    <div class="nav container d-flex flex-column align-content-end">
+      <SignUp />
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import CurrentDate from "@/components/LayoutElements/CurrentDate.vue";
-import NavMenu from "../components/NavigationMenu/NavMenu.vue";
+import NavMenu from "@/components/NavigationMenu/NavMenu.vue";
+import SignUp from "@/components/Authentication/SignUp.vue";
 
 export default {
   name: "Home",
   components: {
     CurrentDate,
     NavMenu,
+    SignUp,
   },
   data() {
     return {

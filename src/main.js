@@ -10,9 +10,15 @@ import { auth, db } from "./firebase";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@/styles/style.css";
 
-createApp(App)
+// Global components
+import BaseButton from "@/components/BaseElements/BaseButton.vue";
+
+const app = createApp(App)
   .use(store)
   .use(router)
   .use(auth)
-  .use(db)
-  .mount("#app");
+  .use(db);
+
+app.component("base-button", BaseButton);
+
+app.mount("#app");
