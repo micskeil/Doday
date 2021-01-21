@@ -1,20 +1,20 @@
 <template>
   <div class="container-fluid ">
     <div class="header container d-flex justify-content-between">
-      <CurrentTime />
-      <div>MENU</div>
+      <CurrentDate />
+      <div class="d-flex align-items-center pr-3">MENU</div>
     </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import CurrentTime from "@/components/CurrentTime.vue";
+import CurrentDate from "@/components/CurrentDate.vue";
 
 export default {
   name: "Home",
   components: {
-    CurrentTime,
+    CurrentDate,
   },
 };
 </script>

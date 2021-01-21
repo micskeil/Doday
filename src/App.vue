@@ -14,12 +14,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
-  text-align: center;
   color: #181e34;
 }
 
 #nav {
   padding: 10px;
+  text-align: center;
 }
 
 #nav a {
