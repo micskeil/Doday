@@ -13,7 +13,7 @@ export default {
     return {
       date: null,
       time: null,
-      timestamp: null,
+      timestamp: null
     };
   },
   computed: {},
@@ -21,7 +21,7 @@ export default {
   watch: {
     currentTime() {
       return new Date();
-    },
+    }
   },
 
   methods: {
@@ -75,14 +75,14 @@ export default {
 
       this.time = time;
       this.date = date;
-    },
+    }
   },
 
   created() {
     setInterval(() => {
       this.getNow();
     }, 1000);
-  },
+  }
 };
 </script>
 

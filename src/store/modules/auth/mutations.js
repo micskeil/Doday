@@ -9,5 +9,5 @@ export default {
   clearUser(state) {
     state.isLoggedIn = false;
     state.user = null;
-  },
+  }
 };

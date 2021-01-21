@@ -14,8 +14,8 @@ import CurrentDate from "@/components/CurrentDate.vue";
 export default {
   name: "Home",
   components: {
-    CurrentDate,
-  },
+    CurrentDate
+  }
 };
 </script>
 

@@ -1,5 +1,3 @@
-import firebase from "firebase";
-
 export default {
   async registerUser(contex, payload) {
     try {
@@ -8,7 +6,7 @@ export default {
         .createUserWithEmailAndPassword(payload.email, payload.password);
 
       response.user.updateProfile({
-        displayName: payload.name,
+        displayName: payload.name
       });
       // We have to save the user in the Database too
       firebase
@@ -17,7 +15,7 @@ export default {
         .doc(response.user.uid)
         .set(
           {
-            displayName: payload.name,
+            displayName: payload.name
           },
           { merge: true }
         )
@@ -42,7 +40,7 @@ export default {
 
       contex.commit("setUser", {
         isLoggedIn: true,
-        user: response.user,
+        user: response.user
       });
     } catch (error) {
       var errorCode = error.code;
@@ -57,7 +55,7 @@ export default {
     if (user) {
       contex.commit("setUser", {
         isLoggedIn: true,
-        user: user,
+        user: user
       });
     }
   },
@@ -66,5 +64,5 @@ export default {
     await firebase.auth().signOut();
     contex.commit("clearUser");
     localStorage.removeItem("user");
-  },
+  }
 };

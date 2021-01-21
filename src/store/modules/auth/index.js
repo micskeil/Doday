@@ -6,10 +6,10 @@ export default {
   state() {
     return {
       isLoggedIn: true,
-      user: null,
+      user: null
     };
   },
   mutations,
   getters,
-  actions,
+  actions
 };
