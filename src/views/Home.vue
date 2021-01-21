@@ -31,6 +31,7 @@ export default {
       isNavActive: false,
     };
   },
+  computed: {},
   methods: {
     toggleMenu() {
       this.isNavActive = !this.isNavActive;
