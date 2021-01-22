@@ -12,24 +12,41 @@
     >
       <NavMenu />
     </div>
+    <base-card v-if="!isLoggedIn"><Auth /></base-card>
+    <base-card v-if="isLoggedIn"><NewTask /></base-card>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import CurrentDate from "@/components/LayoutElements/CurrentDate.vue";
-import NavMenu from "../components/NavigationMenu/NavMenu.vue";
+import NavMenu from "@/components/NavigationMenu/NavMenu.vue";
+import Auth from "@/components/Authentication/Auth.vue";
+import BaseCard from "../components/BaseElements/BaseCard.vue";
+import NewTask from "../components/TaskComponents/NewTask.vue";
 
 export default {
   name: "Home",
+
   components: {
     CurrentDate,
     NavMenu,
+    Auth,
+    BaseCard,
+    NewTask,
   },
+
   data() {
     return {
       isNavActive: false,
     };
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isLoggedIn;
+    },
+    user() {
+      return this.$store.getters.user;
+    },
   },
   methods: {
     toggleMenu() {
@@ -41,7 +58,8 @@ export default {
 
 <style scoped>
 .header,
-.nav {
+.nav,
+.content {
   max-width: 620px;
 }
 </style>

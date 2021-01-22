@@ -71,7 +71,23 @@ export default {
         }
       };
 
-      const time = today.getHours() + ":" + today.getMinutes() + ":" + second();
+      const minute = () => {
+        if (today.getMinutes() >= 10) {
+          return today.getMinutes();
+        } else if (today.getMinutes() < 10) {
+          return "0" + today.getMinutes();
+        }
+      };
+
+      const hour = () => {
+        if (today.getHours() >= 10) {
+          return today.getHours();
+        } else if (today.getHours() < 10) {
+          return "0" + today.getHours();
+        }
+      };
+
+      const time = hour() + ":" + minute() + ":" + second();
 
       this.time = time;
       this.date = date;

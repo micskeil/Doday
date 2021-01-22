@@ -2,6 +2,13 @@
   <router-view />
 </template>
 
+<script>
+export default {
+  created() {
+    this.$store.dispatch("autoLogin");
+  },
+};
+</script>
 <style>
 @import url("https://fonts.googleapis.com/css?family=Oswald|Quattrocento");
 
@@ -11,6 +18,8 @@
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
   color: #181e34;
+  background-color: rgb(245, 245, 245);
+  height: 100vh;
 }
 
 #nav {
@@ -24,6 +33,10 @@
 }
 
 #nav a.router-link-exact-active {
-  color: #404e88;
+  color: #f2f5ff;
+}
+
+.rounded {
+  border-radius: 20px !important;
 }
 </style>

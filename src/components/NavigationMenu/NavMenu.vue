@@ -1,11 +1,17 @@
 <template
-  ><div>
+  ><div @click="logout">
     Logout
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    async logout() {
+      await this.$store.dispatch("logout");
+    },
+  },
+};
 </script>
 
 <style scoped></style>
