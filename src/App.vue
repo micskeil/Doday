@@ -2,6 +2,13 @@
   <router-view />
 </template>
 
+<script>
+export default {
+  created() {
+    this.$store.dispatch("autoLogin");
+  },
+};
+</script>
 <style>
 @import url("https://fonts.googleapis.com/css?family=Oswald|Quattrocento");
 
@@ -26,7 +33,7 @@
 }
 
 #nav a.router-link-exact-active {
-  color: #404e88;
+  color: #f2f5ff;
 }
 
 .rounded {

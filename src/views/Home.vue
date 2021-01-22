@@ -12,7 +12,8 @@
     >
       <NavMenu />
     </div>
-    <base-card><Auth /></base-card>
+    <base-card v-if="!isLoggedIn"><Auth /></base-card>
+    <base-card v-if="isLoggedIn"><NewTask /></base-card>
   </div>
 </template>
 
@@ -21,6 +22,7 @@ import CurrentDate from "@/components/LayoutElements/CurrentDate.vue";
 import NavMenu from "@/components/NavigationMenu/NavMenu.vue";
 import Auth from "@/components/Authentication/Auth.vue";
 import BaseCard from "../components/BaseElements/BaseCard.vue";
+import NewTask from "../components/TaskComponents/NewTask.vue";
 
 export default {
   name: "Home",
@@ -30,6 +32,7 @@ export default {
     NavMenu,
     Auth,
     BaseCard,
+    NewTask,
   },
 
   data() {
@@ -37,7 +40,14 @@ export default {
       isNavActive: false,
     };
   },
-  computed: {},
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isLoggedIn;
+    },
+    user() {
+      return this.$store.getters.user;
+    },
+  },
   methods: {
     toggleMenu() {
       this.isNavActive = !this.isNavActive;

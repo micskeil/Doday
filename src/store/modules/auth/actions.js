@@ -1,31 +1,12 @@
-import { auth, db } from "@/firebase";
+import { auth } from "@/firebase";
 
 export default {
   async registerUser(contex, payload) {
     try {
-      const response = await auth.createUserWithEmailAndPassword(
+      await auth.createUserWithEmailAndPassword(
         payload.email,
         payload.password
       );
-
-      response.user.updateProfile({
-        displayName: payload.name,
-      });
-      // We have to save the user in the Database too
-      db.collection("/users/")
-        .doc(response.user.uid)
-        .set(
-          {
-            displayName: payload.name,
-          },
-          { merge: true }
-        )
-        .then
-        // Create the current session ID locally, and upload it to the store
-        ()
-        .catch(function(error) {
-          console.error("Error adding document: ", error);
-        });
     } catch (error) {
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -45,9 +26,20 @@ export default {
         user: response.user,
       });
     } catch (error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log(errorCode + ": " + errorMessage);
+      console.log(error.code + ": " + error.message);
+      try {
+        await auth.createUserWithEmailAndPassword(user.email, user.password);
+        const response = await auth.signInWithEmailAndPassword(
+          user.email,
+          user.password
+        );
+        contex.commit("setUser", {
+          isLoggedIn: true,
+          user: response.user,
+        });
+      } catch (error) {
+        console.log(error.code + ": " + error.message);
+      }
     }
   },
 

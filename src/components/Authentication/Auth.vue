@@ -1,41 +1,38 @@
 <template>
-  <div class="slot  shadow p-3 rounded rounded">
-    <form class="form row m-1" @submit.prevent="" novalidate>
-      <div class="form-group col-12 col-md-4 m-0 p-1">
-        <input
-          type="email"
-          class="form-control rounded m-0
+  <form class="form row m-1" @submit.prevent="" novalidate>
+    <div class="form-group col-12 col-md-4 m-0 p-1">
+      <input
+        type="email"
+        class="form-control rounded m-0
           "
-          placeholder="Email"
-          v-model="email"
-        />
-      </div>
+        placeholder="Email"
+        v-model="email"
+      />
+    </div>
 
-      <div class="form-group col-12 col-md-4 m-0 p-1">
-        <input
-          type="password"
-          class="form-control rounded m-0"
-          placeholder="Password"
-          v-model="password"
-        />
-      </div>
+    <div class="form-group col-12 col-md-4 m-0 p-1">
+      <input
+        type="password"
+        class="form-control rounded m-0"
+        placeholder="Password"
+        v-model="password"
+      />
+    </div>
 
-      <div class="form-group col-12 col-md-4 m-0 p-1">
-        <base-button
-          type="submit"
-          class="form-control rounded m-0"
-          @click="signUp()"
-        >
-          SIGNUP / LOGIN
-        </base-button>
-      </div>
-    </form>
+    <div class="form-group col-12 col-md-4 m-0 p-1">
+      <base-button
+        type="submit"
+        class="form-control rounded m-0"
+        @click="login()"
+      >
+        SIGNUP / LOGIN
+      </base-button>
+    </div>
+  </form>
 
-    <p v-if="!formIsValid" class="warning mt-3">
-      Kérlek adj meg egy felhasználónevet, érvényes e-mail címet és egy legalább
-      8 karakter hosszúságú jelszót!
-    </p>
-  </div>
+  <p v-if="!formIsValid" class="warning text-center p-3">
+    Please add your correct e-mail address and password (minimum 6 character)!
+  </p>
 </template>
 
 <script>
@@ -50,24 +47,19 @@ export default {
   },
 
   methods: {
-    signUp() {
+    login() {
       if (
-        this.name === "" ||
         this.email === "" ||
         !this.email.includes("@") ||
-        this.password.length < 8
+        this.password.length < 6
       ) {
         this.formIsValid = false;
         return;
       } else {
-        console.log(this.password.length);
-
-        this.$store.dispatch("registerUser", {
+        this.$store.dispatch("login", {
           email: this.email,
           password: this.password,
-          name: this.name,
         });
-        this.$router.push("/Home");
       }
     },
   },

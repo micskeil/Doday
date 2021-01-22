@@ -5,11 +5,11 @@ import actions from "./actions.js";
 export default {
   state() {
     return {
-      isLoggedIn: true,
-      user: null
+      isLoggedIn: false,
+      user: null,
     };
   },
   mutations,
   getters,
-  actions
+  actions,
 };
