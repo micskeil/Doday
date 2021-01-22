@@ -39,7 +39,6 @@ export default {
         user.email,
         user.password
       );
-
       contex.commit("setUser", {
         isLoggedIn: true,
         user: response.user,
@@ -53,7 +52,6 @@ export default {
 
   autoLogin(contex) {
     const user = JSON.parse(localStorage.getItem("user"));
-
     if (user) {
       contex.commit("setUser", {
         isLoggedIn: true,
