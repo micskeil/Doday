@@ -23,7 +23,7 @@
       <base-button
         type="submit"
         class="form-control rounded m-0"
-        @click="login()"
+        @click="login"
       >
         SIGNUP / LOGIN
       </base-button>

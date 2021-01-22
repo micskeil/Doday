@@ -1,10 +1,4 @@
-<template>
-  <div>
-    <span class="material-icons">
-      control_point
-    </span>
-  </div>
-</template>
+<template> </template>
 
 <script>
 export default {};
