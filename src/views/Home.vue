@@ -12,7 +12,7 @@
     >
       <NavMenu />
     </div>
-    <div class="auth container d-flex flex-column align-items-between">
+    <div class="auth container d-flex flex-column align-items-between p-0 pt-5">
       <SignUp />
     </div>
   </div>

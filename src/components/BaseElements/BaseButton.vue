@@ -1,5 +1,5 @@
 <template>
-  <button class="button rounded ">
+  <button class="button border rounded">
     <slot> </slot>
   </button>
 </template>
@@ -13,18 +13,14 @@ export default {
 </script>
 
 <style lang="scss">
-$color: #181e34;
-$color2: #404e88;
-
 .button {
   width: 100%;
-  background-color: $color;
-  border-radius: 0;
-  color: white;
+  background-color: white;
+  color: #181e34;
   border: none;
 
   &:hover {
-    background-color: $color2;
+    background-color: white;
     opacity: 0.8;
   }
 }

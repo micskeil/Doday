@@ -11,7 +11,7 @@
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
   color: #181e34;
-  background-color: rgb(252, 252, 252);
+  background-color: rgb(245, 245, 245);
   height: 100vh;
 }
 
@@ -27,5 +27,9 @@
 
 #nav a.router-link-exact-active {
   color: #404e88;
+}
+
+.rounded {
+  border-radius: 20px !important;
 }
 </style>

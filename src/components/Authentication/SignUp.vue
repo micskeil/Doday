@@ -1,34 +1,37 @@
 <template>
-  <div class="login p-0 pt-5">
-    <form
-      class="form row  border border-info p-5 rounded"
-      @submit.prevent=""
-      novalidate
-    >
-      <div class="form-group sm-col-6 md-col-4  p-0 mb-0">
+  <div class="slot pl-3 border p-3 rounded rounded">
+    <form class="form row" @submit.prevent="" novalidate>
+      <div class="form-group col-12  col-md-4">
         <input
           type="email"
-          class="form-control"
+          class="form-control rounded
+          "
           placeholder="Email"
           v-model="email"
         />
       </div>
 
-      <div class="form-group sm-col-6 md-col-4 p-0 mb-0">
+      <div class="form-group col-12 col-md-4">
         <input
           type="password"
-          class="form-control"
+          class="form-control rounded"
           placeholder="Password"
           v-model="password"
         />
       </div>
 
-      <base-button type="submit" class="sm-col-12 md-col-4" @click="signUp()">
-        SIGNUP / LOGIN
-      </base-button>
+      <div class="form-group col-12 col-md-4">
+        <base-button
+          type="submit"
+          class="form-control rounded"
+          @click="signUp()"
+        >
+          SIGNUP / LOGIN
+        </base-button>
+      </div>
     </form>
 
-    <p v-if="!formIsValid" class="warning mt-3 p-1">
+    <p v-if="!formIsValid" class="warning mt-3">
       Kérlek adj meg egy felhasználónevet, érvényes e-mail címet és egy legalább
       8 karakter hosszúságú jelszót!
     </p>
@@ -70,3 +73,15 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.slot {
+  background-color: white;
+}
+.form {
+}
+
+.rounded {
+  border-radius: 20px !important;
+}
+</style>
