@@ -1,29 +1,29 @@
 <template>
-  <div class="slot pl-3 border p-3 rounded rounded">
-    <form class="form row" @submit.prevent="" novalidate>
-      <div class="form-group col-12  col-md-4">
+  <div class="slot  shadow p-3 rounded rounded">
+    <form class="form row m-1" @submit.prevent="" novalidate>
+      <div class="form-group col-12 col-md-4 m-0 p-1">
         <input
           type="email"
-          class="form-control rounded
+          class="form-control rounded m-0
           "
           placeholder="Email"
           v-model="email"
         />
       </div>
 
-      <div class="form-group col-12 col-md-4">
+      <div class="form-group col-12 col-md-4 m-0 p-1">
         <input
           type="password"
-          class="form-control rounded"
+          class="form-control rounded m-0"
           placeholder="Password"
           v-model="password"
         />
       </div>
 
-      <div class="form-group col-12 col-md-4">
+      <div class="form-group col-12 col-md-4 m-0 p-1">
         <base-button
           type="submit"
-          class="form-control rounded"
+          class="form-control rounded m-0"
           @click="signUp()"
         >
           SIGNUP / LOGIN

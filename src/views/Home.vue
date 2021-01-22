@@ -12,24 +12,26 @@
     >
       <NavMenu />
     </div>
-    <div class="auth container d-flex flex-column align-items-between p-0 pt-5">
-      <SignUp />
-    </div>
+    <base-card><Auth /></base-card>
   </div>
 </template>
 
 <script>
 import CurrentDate from "@/components/LayoutElements/CurrentDate.vue";
 import NavMenu from "@/components/NavigationMenu/NavMenu.vue";
-import SignUp from "@/components/Authentication/SignUp.vue";
+import Auth from "@/components/Authentication/Auth.vue";
+import BaseCard from "../components/BaseElements/BaseCard.vue";
 
 export default {
   name: "Home",
+
   components: {
     CurrentDate,
     NavMenu,
-    SignUp,
+    Auth,
+    BaseCard,
   },
+
   data() {
     return {
       isNavActive: false,
@@ -47,7 +49,7 @@ export default {
 <style scoped>
 .header,
 .nav,
-.auth {
+.content {
   max-width: 620px;
 }
 </style>

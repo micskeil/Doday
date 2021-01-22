@@ -1,5 +1,5 @@
 <template>
-  <button class="button border rounded">
+  <button class="button  rounded">
     <slot> </slot>
   </button>
 </template>
@@ -15,8 +15,8 @@ export default {
 <style lang="scss">
 .button {
   width: 100%;
-  background-color: white;
-  color: #181e34;
+  background-color: #de9f35;
+  color: white;
   border: none;
 
   &:hover {
