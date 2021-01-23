@@ -13,7 +13,7 @@
       <NavMenu />
     </div>
     <base-card v-if="!isLoggedIn"><Auth /></base-card>
-    <base-card v-if="isLoggedIn"><NewTask /></base-card>
+    <NewTask v-if="isLoggedIn" />
   </div>
 </template>
 
