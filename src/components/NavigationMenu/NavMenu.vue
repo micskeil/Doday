@@ -1,5 +1,5 @@
 <template
-  ><div @click="logout">
+  ><div class="p-3" @click="logout">
     Logout
   </div>
 </template>
