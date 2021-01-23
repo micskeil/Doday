@@ -70,8 +70,6 @@ export default {
 .slot {
   background-color: white;
 }
-.form {
-}
 
 .rounded {
   border-radius: 20px !important;
