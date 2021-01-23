@@ -44,6 +44,9 @@
           />
         </div>
       </div>
+      <p v-if="!isValidTask" class="text-warning text-center pr-3 pl-3 pt-3">
+        Please add a valid task!
+      </p>
     </div>
   </div>
 </template>
@@ -57,6 +60,7 @@ export default {
       newTask: null,
       taskNote: null,
       isLoading: false,
+      isValidTask: true,
     };
   },
   computed: {
@@ -67,12 +71,21 @@ export default {
   watch: {
     newTask() {
       if (!this.newTask) {
-        this.note = null;
+        this.taskNote = null;
+      }
+
+      if (!this.isValidTask) {
+        this.isValidTask = !this.isValidTask;
       }
     },
   },
   methods: {
     saveTask() {
+      if (this.newTask === null || this.newTask.length < 2) {
+        this.isValidTask = false;
+        return;
+      }
+
       const that = this;
       this.isLoading = true;
       db.collection("users/" + this.uid + "/tasks")

@@ -30,7 +30,7 @@
     </div>
   </form>
 
-  <p v-if="!formIsValid" class="warning text-center p-3">
+  <p v-if="!formIsValid" class="text-warning text-center p-3">
     Please add your correct e-mail address and password (minimum 6 character)!
   </p>
 </template>
