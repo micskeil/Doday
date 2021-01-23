@@ -1,53 +1,53 @@
 <template>
-  <div
-    class="content container d-flex flex-column align-items-between p-0 pt-5"
-  >
-    <div v-if="isLoading" class=" d-flex justify-content-center">
-      <div
-        class="spinner-border text-secondary d-flex justify-content-center"
-        role="status"
-      >
-        <span class="visually-hidden"></span>
+  <div class="pt-5">
+    <base-card>
+      <div v-if="isLoading" class=" d-flex justify-content-center">
+        <div
+          class="spinner-border text-secondary d-flex justify-content-center"
+          role="status"
+        >
+          <span class="visually-hidden"></span>
+        </div>
       </div>
-    </div>
-    <div
-      v-if="!isLoading"
-      class="add-task d-flex flex-column justify-content-end shadow p-3 rounded"
-    >
-      <div class="d-flex justify-content-end">
-        <div class="task-input m-0 p-1">
-          <input
-            type="text"
-            class="form-control rounded m-0
-          "
-            placeholder="Add new task for today..."
-            v-model="newTask"
-          />
-
-          <div v-if="newTask" class="task-note m-0 p-0 mt-1">
-            <textarea
-              type="textarea"
+      <div
+        v-if="!isLoading"
+        class="add-task d-flex flex-column justify-content-end shadow p-3 rounded"
+      >
+        <div class="d-flex justify-content-end">
+          <div class="task-input m-0 p-1">
+            <input
+              type="text"
               class="form-control rounded m-0
           "
-              placeholder="note"
-              v-model="taskNote"
+              placeholder="Add new task for today..."
+              v-model="newTask"
+            />
+
+            <div v-if="newTask" class="task-note m-0 p-0 mt-1">
+              <textarea
+                type="textarea"
+                class="form-control rounded m-0
+          "
+                placeholder="note"
+                v-model="taskNote"
+              />
+            </div>
+          </div>
+
+          <div @click="saveTask" class="m-0 p-1 d-flex align-items-end">
+            <img
+              class="rounded m-0"
+              width="36"
+              height="36"
+              src="@/img/addtask.png"
             />
           </div>
         </div>
-
-        <div @click="saveTask" class="m-0 p-1 d-flex align-items-end">
-          <img
-            class="rounded m-0"
-            width="36"
-            height="36"
-            src="@/img/addtask.png"
-          />
-        </div>
+        <p v-if="!isValidTask" class="text-warning text-center pr-3 pl-3 pt-3">
+          Please add a valid task!
+        </p>
       </div>
-      <p v-if="!isValidTask" class="text-warning text-center pr-3 pl-3 pt-3">
-        Please add a valid task!
-      </p>
-    </div>
+    </base-card>
   </div>
 </template>
 

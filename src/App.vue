@@ -11,6 +11,9 @@ export default {
 </script>
 <style>
 @import url("https://fonts.googleapis.com/css?family=Oswald|Quattrocento");
+body {
+  background-color: rgb(245, 245, 245);
+}
 
 #app {
   font-family: "Oswald", sans-serif;
@@ -19,7 +22,7 @@ export default {
   font-size: 16px;
   color: #181e34;
   background-color: rgb(245, 245, 245);
-  height: 100vh;
+  height: 100%;
 }
 
 #nav {

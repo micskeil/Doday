@@ -9,9 +9,10 @@
     <div v-if="isNavActive" class="nav d-flex flex-column align-content-end">
       <NavMenu />
     </div>
-    <base-card v-if="!isLoggedIn"><Auth /></base-card>
-    <NewTask v-if="isLoggedIn" />
 
+    <base-card v-if="!isLoggedIn"><Auth /></base-card>
+
+    <NewTask v-if="isLoggedIn" />
     <TaskList />
   </div>
 </template>
