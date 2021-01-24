@@ -96,6 +96,7 @@ export default {
           finished: false,
         })
         .then(function() {
+          that.$store.dispatch("getActiveTasks");
           that.newTask = null;
           that.taskNote = null;
           that.isLoading = false;

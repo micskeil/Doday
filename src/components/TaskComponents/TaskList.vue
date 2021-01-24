@@ -46,21 +46,20 @@
 </template>
 <script>
 import BaseCard from "../BaseElements/BaseCard.vue";
-import { db } from "@/firebase";
 import DeleteTask from "./DeleteTask.vue";
 
 export default {
   components: { BaseCard, DeleteTask },
   data() {
-    return {
-      activeTasks: [],
-      isLoading: true,
-      toUpdate: false,
-    };
+    return {};
   },
   computed: {
     uid() {
       return this.$store.getters.user.uid;
+    },
+    activeTasks() {
+      console.log(this.$store.getters.activeTasks);
+      return this.$store.getters.activeTasks;
     },
     numberOfTasks() {
       if (this.activeTasks.length === 0) {
@@ -68,30 +67,11 @@ export default {
       }
       return `You have ${this.activeTasks.length} tasks left for today!`;
     },
+    isLoading() {
+      return this.activeTasks.length > 0 ? false : false;
+    },
   },
   methods: {
-    getActiveTasks() {
-      const that = this;
-      db.collection("users/" + this.uid + "/tasks")
-        .where("finished", "==", false)
-        .orderBy("created", "desc")
-        .get()
-        .then(function(querySnapshot) {
-          querySnapshot.forEach(function(doc) {
-            that.activeTasks.push({
-              taskId: doc.id,
-              taskTitle: doc.data().taskTitle,
-              taskNote: doc.data().taskNote,
-              created: doc.data().created,
-            });
-            that.isLoading = false;
-          });
-        })
-        .catch(function(error) {
-          console.log("Error getting documents: ", error);
-        });
-    },
-
     deleteTask(taskId) {
       this.activeTasks.splice(
         this.activeTasks.findIndex((x) => x.taskId === taskId),
@@ -100,7 +80,7 @@ export default {
     },
   },
   created() {
-    this.getActiveTasks();
+    this.$store.dispatch("getActiveTasks");
   },
 };
 </script>
