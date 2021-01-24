@@ -6,6 +6,7 @@ export default {
   state() {
     return {
       activeTasks: [],
+      finishedTasks: [],
     };
   },
   mutations,

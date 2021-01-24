@@ -24,11 +24,12 @@ export default {
   },
   methods: {
     deleteTask() {
+      const that = this;
       db.collection("users/" + this.uid + "/tasks/")
         .doc(this.taskId)
         .delete()
         .then(function() {
-          console.log("Document successfully deleted!");
+          that.$store.dispatch("getActiveTasks");
         })
         .catch(function(error) {
           console.error("Error removing document: ", error);
