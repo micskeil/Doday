@@ -16,21 +16,46 @@
     </div>
 
     <base-card class="" v-for="task in activeTasks" :key="task">
-      <div class="">{{ task.taskTitle }}</div>
-      <div class="note">{{ task.taskNote }}</div>
+      <div class="d-flex justify-content-between">
+        <div>
+          <div class="task-input m-0 mt-1">
+            {{ task.taskTitle }}
+          </div>
+          <div class="task-note m-0 p-0 mt-1">
+            {{ task.taskNote }}
+          </div>
+        </div>
+        <div @click="markReady" class="m-0 p-1 d-flex align-items-end">
+          <img
+            class="rounded m-0"
+            width="36"
+            height="36"
+            src="@/img/unchecked.png"
+          />
+        </div>
+      </div>
+      <div class="settings d-flex justify-content-between pt-1">
+        <div @click="deleteTask(task.taskId)" class="text-warning side">
+          <DeleteTask :taskId="task.taskId" />
+        </div>
+        <div class="text-info">Edit</div>
+        <div class="side text-right">Created: 1 day ago</div>
+      </div>
     </base-card>
   </div>
 </template>
 <script>
 import BaseCard from "../BaseElements/BaseCard.vue";
 import { db } from "@/firebase";
+import DeleteTask from "./DeleteTask.vue";
 
 export default {
-  components: { BaseCard },
+  components: { BaseCard, DeleteTask },
   data() {
     return {
       activeTasks: [],
       isLoading: true,
+      toUpdate: false,
     };
   },
   computed: {
@@ -49,6 +74,7 @@ export default {
       const that = this;
       db.collection("users/" + this.uid + "/tasks")
         .where("finished", "==", false)
+        .orderBy("created", "desc")
         .get()
         .then(function(querySnapshot) {
           querySnapshot.forEach(function(doc) {
@@ -65,6 +91,13 @@ export default {
           console.log("Error getting documents: ", error);
         });
     },
+
+    deleteTask(taskId) {
+      this.activeTasks.splice(
+        this.activeTasks.findIndex((x) => x.taskId === taskId),
+        1
+      );
+    },
   },
   created() {
     this.getActiveTasks();
@@ -73,7 +106,14 @@ export default {
 </script>
 
 <style scoped>
-.note {
+.side {
+  width: 120px;
+}
+.settings {
+  font-family: Quattrocento, serif;
+  font-size: 0.75rem;
+}
+.task-note {
   font-family: Quattrocento, serif;
 }
 </style>

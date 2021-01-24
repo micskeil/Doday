@@ -1,5 +1,5 @@
 <template>
-  <div class="content container ">
+  <div class="content container">
     <div class="header d-flex justify-content-between p-0 pt-3">
       <CurrentDate />
       <div class="d-flex align-items-center pr-3" @click="toggleMenu">
@@ -13,7 +13,8 @@
     <base-card v-if="!isLoggedIn"><Auth /></base-card>
 
     <NewTask v-if="isLoggedIn" />
-    <TaskList />
+
+    <TaskList v-if="isLoggedIn" />
   </div>
 </template>
 
