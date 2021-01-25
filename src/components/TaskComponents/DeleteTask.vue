@@ -30,6 +30,7 @@ export default {
         .delete()
         .then(function() {
           that.$store.dispatch("getActiveTasks");
+          that.$store.dispatch("getFinishedTasks");
         })
         .catch(function(error) {
           console.error("Error removing document: ", error);

@@ -53,14 +53,7 @@ export default {
       return this.activeTasks.length > 0 ? false : false;
     },
   },
-  methods: {
-    deleteTask(taskId) {
-      this.activeTasks.splice(
-        this.activeTasks.findIndex((x) => x.taskId === taskId),
-        1
-      );
-    },
-  },
+  methods: {},
   created() {
     this.$store.dispatch("getActiveTasks");
     this.$store.dispatch("getFinishedTasks");
