@@ -8,9 +8,8 @@
         <input
           v-if="isEditable"
           type="text"
-          class="form-control rounded m-0
-          "
-          :value="task.taskTitle"
+          class="form-control rounded m-0 "
+          v-model="editedTaskTitle"
         />
 
         <div v-if="!isEditable" class="task-note m-0 p-0 mt-1">
@@ -19,10 +18,10 @@
         <textarea
           v-if="isEditable"
           type="textarea"
-          class="task-note form-control rounded m-0 mt-1
-          "
+          class="task-note
+        form-control rounded m-0 mt-1 "
           placeholder="note"
-          :value="task.taskNote"
+          v-model="editedTaskNote"
         />
       </div>
       <div @click="toggleFinished" class="m-0 p-1 d-flex align-items-end">
@@ -57,6 +56,8 @@ export default {
     return {
       isEditable: false,
       isFinished: this.task.finished,
+      editedTaskTitle: this.task.taskTitle,
+      editedTaskNote: this.task.taskNote,
     };
   },
   computed: {
@@ -81,6 +82,9 @@ export default {
   methods: {
     toggleEditable() {
       this.isEditable = !this.isEditable;
+      if (!this.isEditable) {
+        this.updateTask();
+      }
     },
     toggleFinished() {
       this.isFinished = !this.isFinished;
@@ -94,6 +98,25 @@ export default {
         .update({
           finished: this.isFinished,
           finisheDate: new Date(),
+        })
+        .then(function() {
+          that.$store.dispatch("getActiveTasks");
+          that.$store.dispatch("getFinishedTasks");
+        })
+        .catch(function(error) {
+          console.error("Error writing document: ", error);
+        });
+    },
+
+    updateTask() {
+      console.log(this.task.taskTitletaskTitle);
+      const that = this;
+      this.isLoading = true;
+      db.collection("users/" + this.uid + "/tasks")
+        .doc(this.task.taskId)
+        .update({
+          taskTitle: this.editedTaskTitle,
+          taskNote: this.editedTaskNote,
         })
         .then(function() {
           that.$store.dispatch("getActiveTasks");
