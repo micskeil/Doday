@@ -21,7 +21,7 @@
         <span class="font-weight-light"> {{ numberOfFinishedTasks }} </span>
       </div>
     </div>
-    <TaskItem v-for="task in finishedTasks" :key="task" :task="task" />
+    <TaskItem class="" v-for="task in finishedTasks" :key="task" :task="task" />
   </div>
 </template>
 <script>

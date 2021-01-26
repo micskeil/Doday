@@ -90,6 +90,7 @@ export default {
       this.isFinished = !this.isFinished;
       this.finishTask();
     },
+
     finishTask() {
       const that = this;
       this.isLoading = true;
@@ -109,7 +110,12 @@ export default {
     },
 
     updateTask() {
-      console.log(this.task.taskTitletaskTitle);
+      if (
+        this.editedTaskTitle == this.task.taskTitle &&
+        this.editedTaskNote == this.task.taskNote
+      ) {
+        return;
+      }
       const that = this;
       this.isLoading = true;
       db.collection("users/" + this.uid + "/tasks")
